@@ -30,10 +30,11 @@ static void eeprom_writebyte(int adr, unsigned char data) {
 static int cur;
 
 int eeprom_init() {
+	return 0;
 }
 
 int eeprom_seek(int pos) {
-	cur = pos;
+	return cur = pos;
 }
 
 int eeprom_read(char *data, int len) {
@@ -42,6 +43,8 @@ int eeprom_read(char *data, int len) {
 	while(i < len) {
 		data[i++] = eeprom_readbyte(cur++);
 	}
+	
+	return len;
 }
 
 int eeprom_write(char *data, int len) {
@@ -50,4 +53,6 @@ int eeprom_write(char *data, int len) {
 	while(i < len) {
 		eeprom_writebyte(cur++, data[i++]);
 	}
+	
+	return len;
 }
